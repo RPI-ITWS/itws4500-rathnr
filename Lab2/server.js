@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
-import articles from '../articles.json';
+import { json } from 'body-parser'
+const articles = require('../articles.json');
 const cors = require('cors')
 // const env = require('dotenv')
 
