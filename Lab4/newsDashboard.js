@@ -8,14 +8,11 @@ function NewsDashboard() {
   const [otherNews, setOtherNews] = useState([]);
 
   useEffect(() => {
-    // Fetch news, weather, and other news data
-    // This is a simplified example, you'll need to adapt it based on how your backend is set up
     const fetchNewsAndWeather = async () => {
       try {
-        const newsResponse = await axios.get('/articles');
+        const newsResponse = await axios.get('/articles.json');
         setNews(newsResponse.data);
 
-        // Assuming you have endpoints like these or you might need to adapt based on your actual API
         const weatherResponse = await axios.get('/weather?city=London');
         setWeather(weatherResponse.data);
 
@@ -32,7 +29,7 @@ function NewsDashboard() {
   return (
     <div>
       <Section title="Articles" items={news} />
-      <Section title="Weather" items={[weather]} /> {/* Weather might not be an array, adjust as needed */}
+      <Section title="Weather" items={[weather]} />
       <Section title="Other News" items={otherNews} />
     </div>
   );
