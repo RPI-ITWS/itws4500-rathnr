@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Activity Suggester</title>
+    <title>Activity Finder</title>
 </head>
 <body>
     <h1>Are you bored?</h1>
     <div>
-        <h2>Find an Activity⇩</h2>
+        <h2>Find Something to Do ⇩</h2>
         <form id="activityForm">
         <label for="type">Type of Activity:</label>
+        <h3> fill out one of the options below ⇩</h3>
         <select name="type" id="type">
             <option value="">Any</option>
             <option value="education">Education</option>
@@ -24,8 +25,16 @@
             <option value="music">Music</option>
             <option value="busywork">Busywork</option>
         </select>
-        <br>
-        <button type="submit">Find Something To Do</button>
+        <label for="participants">Participants:</label>
+        <input type="number" id="participants" name="participants" placeholder="Number of people">
+
+        <label for="price">Price: 0 (free) to 1 (expensive)</label>
+        <input type="number" id="price" name="price" step="0.1" min="0" max="1" placeholder="0">
+
+        <label for="accessibility">Accessibility: 0 (easy) to 1 (hard)</label>
+        <input type="number" id="accessibility" name="accessibility" step="0.1" min="0" max="1" placeholder="0">
+        <div><button type="button" id="fetchActivityBtn">Find an Activity</button></div>
+    </form>
     </form></div>
     
 
