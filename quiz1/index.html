@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Activity Suggester</title>
+</head>
+<body>
+    <h1>Are you bored?</h1>
+    <div>
+        <h2>Find an Activity⇩</h2>
+        <form id="activityForm">
+        <label for="type">Type of Activity:</label>
+        <select name="type" id="type">
+            <option value="">Any</option>
+            <option value="education">Education</option>
+            <option value="recreational">Recreational</option>
+            <option value="social">Social</option>
+            <option value="diy">DIY</option>
+            <option value="charity">Charity</option>
+            <option value="cooking">Cooking</option>
+            <option value="relaxation">Relaxation</option>
+            <option value="music">Music</option>
+            <option value="busywork">Busywork</option>
+        </select>
+        <br>
+        <button type="submit">Find Something To Do</button>
+    </form></div>
+    
+
+    <div id="activityResult"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
