@@ -13,7 +13,7 @@ The transformed data adheres to the following schema:
 - `weatherDescription`: Weather description
 
 ## ETL Process
-The ETL (Extract, Transform, Load) process is implemented in the `runETL` function in `etl.js`. It fetches data from each weather API, transforms the data using the `transformData` function, and loads the transformed data into the MongoDB database using the `loadData` function.
+The ETL process is implemented in the `runETL` function in `etl.js`. It fetches data from each weather API, transforms the data using the `transformData` function, and loads the transformed data into the MongoDB database using the `loadData` function.
 
 ## API Endpoints
 The following API endpoints are available:
@@ -32,6 +32,10 @@ password = qD4WgJWFPr4Xdu4b
 
 ## Challenges Faced
 -  finding apis, for that I just used generative ai to give me a list " give me a list of three free apis that all report the same kind of information"
--  
+-  I had some troubles getting stuff about the react to work I used the react website to help with that the same with node
+- mongo issues - look at citations
 
 ## Citations
+https://react.dev/
+https://nodejs.org/docs/latest/api/
+https://www.mongodb.com/community/forums/ - I GOT help with stuff for mongo from here
