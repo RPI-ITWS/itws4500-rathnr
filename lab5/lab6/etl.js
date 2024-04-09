@@ -34,4 +34,5 @@ async function fetchFromTomorrowIo() {
     const response = await axios.get(`https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=${tomorrowIoKey}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data from Tomorro
+    console.error('Error fetching data from Tomorrow');
+  }
