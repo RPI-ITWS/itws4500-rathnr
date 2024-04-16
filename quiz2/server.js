@@ -1,24 +1,23 @@
 const express = require('express');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost/quotesdb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://rathnr:WDdsIcbawDYGrMRV@quotesdb.fd5oeii.mongodb.net/, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Create a schema for quotes
 const quoteSchema = new mongoose.Schema({
   id: Number,
   author: String,
   quote: String
 });
 
-// Create a model for quotes
+
 const Quote = mongoose.model('Quote', quoteSchema);
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-// Helper function to extract quote data from API response
 function extractQuoteData(apiResponse, apiName) {
   let quoteText = '';
   let quoteAuthor = '';
@@ -90,7 +89,7 @@ app.get('/quiz2', async (req, res) => {
     const quotes = await Quote.find({}, { _id: 0, __v: 0 });
     res.json(quotes);
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -100,12 +99,12 @@ app.get('/quiz2/:number', async (req, res) => {
     const quote = await Quote.findOne({ id: number }, { _id: 0, __v: 0 });
 
     if (!quote) {
-      res.status(404).json({ error: 'Quote not found' });
+      res.status(404).json({ message: 'Quote not found' });
     } else {
       res.json(quote);
     }
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -115,13 +114,13 @@ app.post('/quiz2', async (req, res) => {
     await runETLPipeline(apiName);
     res.status(201).json({ message: 'Quote added successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
 app.post('/quiz2/:number', (req, res) => {
   const number = parseInt(req.params.number);
-  res.status(405).json({ error: 'Method not allowed' });
+  res.status(405).json({ message: 'Method not allowed' });
 });
 
 app.put('/quiz2', async (req, res) => {
@@ -130,7 +129,7 @@ app.put('/quiz2', async (req, res) => {
     await Quote.updateMany({}, updateData);
     res.json({ message: 'All quotes updated successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -141,12 +140,12 @@ app.put('/quiz2/:number', async (req, res) => {
     const result = await Quote.updateOne({ id: number }, updateData);
 
     if (result.nModified === 0) {
-      res.status(404).json({ error: 'Quote not found' });
+      res.status(404).json({ message: 'Quote not found' });
     } else {
       res.json({ message: 'Quote updated successfully' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -155,7 +154,7 @@ app.delete('/quiz2', async (req, res) => {
     await Quote.deleteMany({});
     res.json({ message: 'All quotes deleted successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -165,12 +164,12 @@ app.delete('/quiz2/:number', async (req, res) => {
     const result = await Quote.deleteOne({ id: number });
 
     if (result.deletedCount === 0) {
-      res.status(404).json({ error: 'Quote not found' });
+      res.status(404).json({ message: 'Quote not found' });
     } else {
       res.json({ message: 'Quote deleted successfully' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 

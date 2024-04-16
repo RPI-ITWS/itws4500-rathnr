@@ -1,7 +1,7 @@
 {
   "name": "quiz2",
   "version": "1.0.0",
-  "description": "",
+  "description": "The biggest issue that I had throug the entire quiz was the fact that I cannot get node to work on my VM, this seems to be a common problem among many people that I know.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
